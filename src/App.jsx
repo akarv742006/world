@@ -1,14 +1,14 @@
 import React, { useState, useEffect, Component } from 'react';
-import Welcome from './components/Welcome';
-import Proposal from './components/Proposal';
-import Gallery from './components/Gallery';
-import Wishes from './components/Wishes';
-import SinglePhoto from './components/SinglePhoto';
-import LoveLetter from './components/LoveLetter';
-import Reasons from './components/Reasons';
-import Timeline from './components/Timeline';
-import Promises from './components/Promises';
-import Layout from './components/Layout';
+import Welcome from './components/Welcome.jsx';
+import Proposal from './components/Proposal.jsx';
+import Gallery from './components/Gallery.jsx';
+import Wishes from './components/Wishes.jsx';
+import SinglePhoto from './components/SinglePhoto.jsx';
+import LoveLetter from './components/LoveLetter.jsx';
+import Reasons from './components/Reasons.jsx';
+import Timeline from './components/Timeline.jsx';
+import Promises from './components/Promises.jsx';
+import Layout from './components/Layout.jsx';
 import confetti from 'canvas-confetti';
 
 // Class-based Error Boundary for reliable production catching
@@ -67,17 +67,7 @@ function App() {
       case 'promises': return <Promises onNext={() => next('wishes')} />;
       case 'wishes': return <Wishes onNext={() => next('photo')} />;
       case 'photo': return <SinglePhoto onNext={() => next('proposal')} />;
-      case 'proposal': return <Proposal onYes={() => {
-        next('celebration');
-        setTimeout(() => {
-          confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.6 },
-            colors: ['#B76E79', '#D4AF37', '#FFF']
-          });
-        }, 500);
-      }} />;
+      case 'proposal': return <Proposal onYes={() => next('celebration')} />;
       case 'celebration': return <Gallery />;
       default: return <Welcome onStart={() => next('loveletter')} />;
     }
