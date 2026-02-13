@@ -33,16 +33,16 @@ const Gallery = () => {
                     <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.2, duration: 1 }}
                         className="relative group cursor-pointer"
                     >
                         {/* Frame */}
                         <div className="p-4 bg-[#111] border border-gold-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.8)] transition-all duration-700 group-hover:border-gold-400 group-hover:scale-105 group-hover:shadow-[0_20px_60px_rgba(212,175,55,0.2)]">
-                            <div className="overflow-hidden relative w-64 h-80 md:w-80 md:h-96 grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
+                            <div className="overflow-hidden relative w-64 h-80 md:w-80 md:h-96 transition-all duration-1000 ease-in-out">
                                 <img
                                     src={photo}
-                                    alt={`Memory`}
+                                    alt={`Memory ${index + 1}`}
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
