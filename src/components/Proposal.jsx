@@ -10,7 +10,7 @@ const Proposal = ({ onYes }) => {
     // WhatsApp Message Logic
     const sendWhatsapp = (msg) => {
         const encodedMsg = encodeURIComponent(msg);
-        window.location.href = `https://wa.me/?text=${encodedMsg}`;
+        window.location.href = `https://wa.me/916379762186?text=${encodedMsg}`;
         onYes(); // Trigger celebration
     };
 
