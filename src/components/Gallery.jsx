@@ -1,0 +1,63 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const photos = [
+    '/images/photo1.jpeg',
+    '/images/photo2.jpeg',
+    '/images/photo3.jpeg',
+    '/images/photo4.jpeg',
+    '/images/photo5.jpeg'
+];
+
+const Gallery = () => {
+    return (
+        <div className="py-20 px-4 w-full min-h-screen flex flex-col items-center">
+            <div className="text-center mb-16">
+                <h2 className="text-4xl md:text-6xl font-cinzel text-gold-400 mb-6 tracking-wide">The Collection</h2>
+                <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-600 to-transparent mx-auto"></div>
+            </div>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="flex flex-wrap justify-center gap-8 md:gap-12 max-w-7xl"
+            >
+                {photos.map((photo, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.2, duration: 1 }}
+                        className="relative group cursor-pointer"
+                    >
+                        {/* Frame */}
+                        <div className="p-4 bg-[#111] border border-gold-700/50 shadow-[0_10px_40px_rgba(0,0,0,0.8)] transition-all duration-700 group-hover:border-gold-400 group-hover:scale-105 group-hover:shadow-[0_20px_60px_rgba(212,175,55,0.2)]">
+                            <div className="overflow-hidden relative w-64 h-80 md:w-80 md:h-96 grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out">
+                                <img
+                                    src={photo}
+                                    alt={`Memory`}
+                                    className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-700"></div>
+                            </div>
+                        </div>
+
+                        {/* Label */}
+                        <div className="mt-4 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                            <p className="text-xs font-cinzel text-gold-500 tracking-[0.2em] uppercase">Memory {index + 1}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            <div className="text-center mt-32 mb-12">
+                <p className="text-xs uppercase tracking-[0.4em] text-gold-700 font-cinzel">
+                    And many more to come
+                </p>
+            </div>
+        </div>
+    );
+};
+
+export default Gallery;
