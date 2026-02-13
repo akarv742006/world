@@ -17,9 +17,7 @@ const Layout = ({ children }) => {
             {/* Main Content Area */}
             <main className="flex-grow flex items-center justify-center p-4 md:p-8 w-full relative z-10 mt-16 md:mt-20 min-h-[80vh]">
                 <div className="w-full max-w-5xl flex flex-col items-center justify-center">
-                    <AnimatePresence mode="wait">
-                        {children}
-                    </AnimatePresence>
+                    {children}
                 </div>
             </main>
 

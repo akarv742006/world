@@ -9,8 +9,7 @@ import Reasons from './components/Reasons';
 import Timeline from './components/Timeline';
 import Promises from './components/Promises';
 import Layout from './components/Layout';
-import Confetti from 'react-confetti';
-import { motion } from 'framer-motion';
+import confetti from 'canvas-confetti';
 
 function App() {
   const [stage, setStage] = useState('welcome');
@@ -26,66 +25,33 @@ function App() {
   const handlePromisesNext = () => setStage('wishes');
   const handleWishesNext = () => setStage('photo');
   const handlePhotoNext = () => setStage('proposal');
-  const handleYes = () => setStage('celebration');
+  const handleYes = () => {
+    setStage('celebration');
+    confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#B76E79', '#D4AF37', '#FFF']
+    });
+  };
 
   return (
     <Layout stage={stage}>
-      {stage === 'welcome' && (
-        <motion.div key="welcome" exit={{ opacity: 0 }} className="h-full w-full flex items-center justify-center">
-          <Welcome onStart={handleStart} />
-        </motion.div>
-      )}
-
-      {stage === 'loveletter' && (
-        <motion.div key="loveletter" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
-          <LoveLetter onNext={handleLoveLetterNext} />
-        </motion.div>
-      )}
-
-      {stage === 'timeline' && (
-        <motion.div key="timeline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
-          <Timeline onNext={handleTimelineNext} />
-        </motion.div>
-      )}
-
-      {stage === 'reasons' && (
-        <motion.div key="reasons" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
-          <Reasons onNext={handleReasonsNext} />
-        </motion.div>
-      )}
-
-      {stage === 'promises' && (
-        <motion.div key="promises" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
-          <Promises onNext={handlePromisesNext} />
-        </motion.div>
-      )}
-
-      {stage === 'wishes' && (
-        <motion.div key="wishes" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
-          <Wishes onNext={handleWishesNext} />
-        </motion.div>
-      )}
-
-      {stage === 'photo' && (
-        <motion.div key="photo" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
-          <SinglePhoto onNext={handlePhotoNext} />
-        </motion.div>
-      )}
-
-      {stage === 'proposal' && (
-        <motion.div key="proposal" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
-          <Proposal onYes={handleYes} />
-        </motion.div>
-      )}
-
-      {stage === 'celebration' && (
-        <motion.div key="celebration" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
-          <Confetti recycle={false} numberOfPieces={500} gravity={0.1} colors={['#B76E79', '#D4AF37', '#FFF']} />
-          <div className="animate-fade-in w-full">
+      <div className="w-full flex flex-col items-center">
+        {stage === 'welcome' && <Welcome onStart={handleStart} />}
+        {stage === 'loveletter' && <LoveLetter onNext={handleLoveLetterNext} />}
+        {stage === 'timeline' && <Timeline onNext={handleTimelineNext} />}
+        {stage === 'reasons' && <Reasons onNext={handleReasonsNext} />}
+        {stage === 'promises' && <Promises onNext={handlePromisesNext} />}
+        {stage === 'wishes' && <Wishes onNext={handleWishesNext} />}
+        {stage === 'photo' && <SinglePhoto onNext={handlePhotoNext} />}
+        {stage === 'proposal' && <Proposal onYes={handleYes} />}
+        {stage === 'celebration' && (
+          <div className="w-full fade-in">
             <Gallery />
           </div>
-        </motion.div>
-      )}
+        )}
+      </div>
     </Layout>
   );
 }
