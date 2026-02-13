@@ -9,6 +9,8 @@ import Reasons from './components/Reasons.jsx';
 import Timeline from './components/Timeline.jsx';
 import Promises from './components/Promises.jsx';
 import AboutHer from './components/AboutHer.jsx';
+import PraiseCards from './components/PraiseCards.jsx';
+import DeepAppreciation from './components/DeepAppreciation.jsx';
 import Layout from './components/Layout.jsx';
 import confetti from 'canvas-confetti';
 
@@ -45,9 +47,9 @@ function App() {
   const renderContent = () => {
     switch (stage) {
       case 'wishes': return <Wishes onNext={() => next('about')} />;
-      case 'about': return <AboutHer onNext={() => next('reasons')} />;
-      case 'reasons': return <Reasons onNext={() => next('promises')} />;
-      case 'promises': return <Promises onNext={() => next('proposal')} />;
+      case 'about': return <AboutHer onNext={() => next('praisecards')} />;
+      case 'praisecards': return <PraiseCards onNext={() => next('deep')} />;
+      case 'deep': return <DeepAppreciation onNext={() => next('proposal')} />;
       case 'proposal': return <Proposal onYes={() => {
         next('celebration');
         setTimeout(() => {

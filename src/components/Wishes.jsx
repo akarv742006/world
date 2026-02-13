@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import photo from '../assets/images/photo2.jpeg';
 
 const Wishes = ({ onNext }) => {
     const handleNext = (e) => {
@@ -23,6 +24,22 @@ const Wishes = ({ onNext }) => {
                     transition={{ delay: 1 }}
                     className="absolute top-4 left-1/2 -translate-x-1/2 text-gold-500 text-2xl"
                 >⚜️</motion.div>
+
+                {/* Her Photo - Birthday Highlight */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                    className="mb-8 relative flex justify-center"
+                >
+                    <div className="relative w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-gold-500/50 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+                        <img
+                            src={photo}
+                            alt="Birthday Queen"
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110 hover:scale-100"
+                        />
+                    </div>
+                </motion.div>
 
                 <div className="space-y-4 mb-10 mt-6">
                     <motion.span
