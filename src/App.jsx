@@ -18,8 +18,6 @@ function App() {
   }, [stage]);
 
   const handleStart = () => setStage('loveletter');
-
-  const handleStart = () => setStage('loveletter');
   const handleLoveLetterNext = () => setStage('reasons');
   const handleReasonsNext = () => setStage('wishes');
   const handleWishesNext = () => setStage('photo');
