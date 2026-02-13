@@ -1,12 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import photo1 from '../assets/images/photo1.jpeg';
+import photo2 from '../assets/images/photo2.jpeg';
+import photo3 from '../assets/images/photo3.jpeg';
+import photo4 from '../assets/images/photo4.jpeg';
+import photo5 from '../assets/images/photo5.jpeg';
+
 const photos = [
-    '/images/photo1.jpeg',
-    '/images/photo2.jpeg',
-    '/images/photo3.jpeg',
-    '/images/photo4.jpeg',
-    '/images/photo5.jpeg'
+    photo1,
+    photo2,
+    photo3,
+    photo4,
+    photo5
 ];
 
 const Gallery = () => {

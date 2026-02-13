@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import photo1 from '../assets/images/photo1.jpeg';
 
 const SinglePhoto = ({ onNext }) => {
     return (
@@ -11,7 +10,7 @@ const SinglePhoto = ({ onNext }) => {
                 className="w-full max-w-sm mb-12"
             >
                 <img
-                    src="/images/photo1.jpeg"
+                    src={photo1}
                     alt="Her"
                     className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out shadow-2xl shadow-gray-200"
                 />
