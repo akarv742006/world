@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import photo1 from '../assets/images/photo1.jpeg';
 
 const SinglePhoto = ({ onNext }) => {
