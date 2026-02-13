@@ -1,52 +1,40 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-
-const promises = [
-    { text: "I promise to always listen to your dreams.", icon: "👂" },
-    { text: "I promise to be your biggest cheerleader.", icon: "📣" },
-    { text: "I promise to share my fries with you.", icon: "🍟" },
-    { text: "I promise to love you, even on bad hair days.", icon: "💇‍♀️" },
-    { text: "I promise to hold your hand through everything.", icon: "🤝" }
-];
+import { Heart, Stars, ShieldCheck, Flame } from 'lucide-react';
 
 const Promises = ({ onNext }) => {
-    return (
-        <div className="w-full max-w-4xl px-4 py-8">
-            <motion.h2
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-4xl md:text-5xl text-center mb-10 text-pink-500 font-hand"
-            >
-                My Vows to You
-            </motion.h2>
+    const pData = [
+        { icon: <Heart className="text-pink-500" />, title: "Endless Love", text: "I promise to love you more with every passing heartbeat, through every peak and valley." },
+        { icon: <ShieldCheck className="text-blue-500" />, title: "Unwavering Support", text: "As a developer and your partner, I promise to troubleshoot every life bug we face, together." },
+        { icon: <Flame className="text-orange-500" />, title: "Everlasting Spark", text: "I promise to keep the fire of our romance alive, celebrating you not just today, but every day." },
+        { icon: <Stars className="text-yellow-500" />, title: "Shared Dreams", text: "I promise to build our future with the same passion I have for my most ambitious projects." }
+    ];
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                {promises.map((promise, index) => (
-                    <motion.div
+    return (
+        <div className="py-20 px-4 w-full flex flex-col items-center fade-in">
+            <h2 className="text-3xl md:text-5xl font-cinzel text-gold-gradient mb-12 text-center">My Vows to You</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">
+                {pData.map((p, index) => (
+                    <div
                         key={index}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: index * 0.1 }}
-                        whileHover={{ scale: 1.03, rotate: index % 2 === 0 ? 1 : -1 }}
-                        className="cute-card p-6 bg-white flex items-center gap-4 border-l-8 border-l-pink-300"
+                        className="cute-card flex items-center gap-6 border-l-4 border-l-gold-500 bg-white/5"
                     >
-                        <span className="text-4xl">{promise.icon}</span>
-                        <p className="text-lg text-gray-600 font-hand font-bold leading-tight">
-                            {promise.text}
-                        </p>
-                    </motion.div>
+                        <div className="p-3 bg-black/40 rounded-full">{p.icon}</div>
+                        <div>
+                            <h3 className="text-lg font-cinzel text-gold-300 mb-1">{p.title}</h3>
+                            <p className="text-cream/70 text-sm font-light leading-relaxed">{p.text}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
 
-            <div className="text-center">
-                <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+            <div className="mt-16 w-full max-w-xs">
+                <button
                     onClick={onNext}
-                    className="btn-primary px-10 py-3"
+                    className="btn-neon w-full py-4 rounded-full font-cinzel font-bold uppercase tracking-widest text-xs"
                 >
-                    The Big Question ❓
-                </motion.button>
+                    Continue Journey
+                </button>
             </div>
         </div>
     );

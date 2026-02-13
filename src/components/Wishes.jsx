@@ -1,15 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const Wishes = ({ onNext }) => {
     return (
-        <div className="flex flex-col items-center justify-center px-4 text-center w-full max-w-3xl min-h-screen">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.5, ease: "easeOut" }}
-                className="bg-black/40 p-12 md:p-20 border-double border-4 border-gold-600/40 relative"
-            >
+        <div className="flex flex-col items-center justify-center px-4 text-center w-full max-w-3xl min-h-screen fade-in">
+            <div className="bg-black/40 p-12 md:p-20 border-double border-4 border-gold-600/40 relative">
                 {/* Decorative Flourishes */}
                 <div className="absolute top-4 left-1/2 -translate-x-1/2 text-gold-500/30 text-4xl">⚜️</div>
 
@@ -37,7 +31,7 @@ const Wishes = ({ onNext }) => {
                         </button>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </div>
     );
 };
