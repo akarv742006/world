@@ -19,7 +19,7 @@ const Welcome = ({ onStart }) => {
           Happy Birthday, Asvitha
         </span>
 
-        <h1 className="text-5xl md:text-8xl lg:text-9xl font-cinzel text-transparent bg-clip-text bg-gradient-to-b from-gold-100 to-gold-600 mb-8 md:mb-12 drop-shadow-2xl">
+        <h1 className="text-5xl md:text-8xl lg:text-9xl font-cinzel text-gold-400 mb-8 md:mb-12 drop-shadow-2xl">
           Us.
         </h1>
 
