@@ -4,9 +4,9 @@ const Layout = ({ children }) => {
     const [showDedication, setShowDedication] = useState(false);
 
     return (
-        <div className="flex flex-col min-h-screen text-cream overflow-hidden relative">
+        <div className="flex flex-col min-h-screen text-cream overflow-hidden relative bg-[#1a0000]">
             {/* Minimal Luxury Navbar */}
-            <nav className="w-full py-6 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
+            <nav className="w-full py-6 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm shadow-xl">
                 <div className="text-xl font-cinzel font-bold tracking-[0.2em] text-gold-400">
                     Akash & Asvitha
                 </div>
@@ -25,20 +25,19 @@ const Layout = ({ children }) => {
                 <button
                     onClick={() => setShowDedication(true)}
                     className="text-gold-600 text-xl font-cinzel tracking-widest hover:text-gold-400 p-2"
-                    title="Developer Dedication"
                 >
                     ∞
                 </button>
             </footer>
 
-            {/* Dedication Modal (Standard React/CSS) */}
+            {/* Dedication Modal */}
             {showDedication && (
                 <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 fade-in"
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 transition-all duration-300"
                     onClick={() => setShowDedication(false)}
                 >
                     <div
-                        className="bg-[#1a0000] border border-gold-500/30 p-8 max-w-md text-center shadow-[0_0_50px_rgba(212,175,55,0.2)]"
+                        className="bg-[#2D0202] border border-gold-500/30 p-8 max-w-md text-center shadow-[0_0_80px_rgba(0,0,0,1)] rounded-xl"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <h3 className="text-gold-400 font-cinzel text-xl mb-4">Developer's Note</h3>
@@ -49,18 +48,12 @@ const Layout = ({ children }) => {
                         <p className="text-gold-600 font-cinzel text-sm tracking-widest mt-8">
                             - Love, Akash
                         </p>
-                        <button
-                            onClick={() => setShowDedication(false)}
-                            className="mt-8 text-xs text-gray-500 uppercase tracking-widest hover:text-white"
-                        >
-                            Close
-                        </button>
                     </div>
                 </div>
             )}
 
-            {/* Cinematic Noise Overlay */}
-            <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-50 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+            {/* Removed external noise overlay to rule out loading issues */}
+            <div className="fixed inset-0 pointer-events-none opacity-5 z-0 bg-black/20"></div>
         </div>
     );
 };
