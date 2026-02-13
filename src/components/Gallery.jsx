@@ -17,8 +17,8 @@ const photos = [
 
 const Gallery = () => {
     return (
-        <div className="py-20 px-4 w-full min-h-screen flex flex-col items-center">
-            <div className="text-center mb-16">
+        <div className="py-20 px-4 w-full min-h-screen flex flex-col items-center relative z-10">
+            <div className="text-center mb-16 animate-fade-in">
                 <h2 className="text-4xl md:text-6xl font-cinzel text-gold-400 mb-6 tracking-wide">The Collection</h2>
                 <div className="w-32 h-px bg-gradient-to-r from-transparent via-gold-600 to-transparent mx-auto"></div>
             </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Welcome from './components/Welcome';
 import Proposal from './components/Proposal';
 import Gallery from './components/Gallery';
@@ -12,6 +12,12 @@ import { motion } from 'framer-motion';
 
 function App() {
   const [stage, setStage] = useState('welcome');
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [stage]);
+
+  const handleStart = () => setStage('loveletter');
 
   const handleStart = () => setStage('loveletter');
   const handleLoveLetterNext = () => setStage('reasons');
