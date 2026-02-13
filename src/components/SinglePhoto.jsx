@@ -1,35 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import photo1 from '../assets/images/photo1.jpeg';
 
 const SinglePhoto = ({ onNext }) => {
+    useEffect(() => {
+        console.log("SinglePhoto component mounted");
+    }, []);
+
+    const handleNext = (e) => {
+        e.preventDefault();
+        console.log("SinglePhoto: Continue button clicked");
+        onNext();
+    };
+
     return (
-        <div className="flex flex-col items-center justify-center w-full py-16 px-4 fade-in">
-            {/* Classic Polarid Frame */}
+        <div className="flex flex-col items-center justify-center w-full py-12 px-4 shadow-inner fade-in">
+            {/* Minimal Frame */}
             <div
-                className="bg-white p-4 pb-12 shadow-[0_15px_45px_rgba(0,0,0,0.6)] rotate-2 hover:rotate-0 transition-all duration-700 cursor-pointer group mb-12"
-                onClick={onNext}
+                className="bg-white p-3 pb-10 shadow-2xl rotate-1 hover:rotate-0 transition-all duration-700 cursor-pointer border border-gold-500/20 mb-8"
+                onClick={handleNext}
             >
-                <div className="overflow-hidden bg-gray-100">
+                <div className="overflow-hidden bg-gray-50 border border-black/5">
                     <img
                         src={photo1}
-                        alt="The One"
-                        className="w-full max-w-[300px] h-auto grayscale group-hover:grayscale-0 transition-all duration-1000"
+                        alt="Memories"
+                        className="w-full max-w-[280px] h-auto grayscale hover:grayscale-0 transition-all duration-1000"
+                        onError={(e) => {
+                            console.error("Image failed to load in SinglePhoto");
+                            e.target.style.display = 'none';
+                        }}
                     />
                 </div>
-                <p className="mt-6 font-cinzel text-xs text-gray-500 tracking-[0.2em] font-bold">
-                    Chapter I: Us
+                <p className="mt-4 font-cinzel text-[10px] text-gray-400 tracking-[0.3em] font-bold text-center">
+                    I: THE BEGINNING
                 </p>
             </div>
 
-            {/* Action Button */}
-            <div className="w-full max-w-xs p-2 bg-black/40 backdrop-blur-sm rounded-2xl border border-gold-500/20">
-                <button
-                    onClick={onNext}
-                    className="btn-neon w-full py-4 rounded-xl font-cinzel font-bold text-sm tracking-widest uppercase hover:scale-[1.02] active:scale-95 transition-all"
-                >
-                    Continue Journey
-                </button>
-            </div>
+            {/* Robust Button */}
+            <button
+                onClick={handleNext}
+                className="btn-neon px-8 py-3 rounded-xl font-cinzel font-bold text-xs tracking-[0.3em] uppercase w-full max-w-xs shadow-lg"
+            >
+                Ask The Question
+            </button>
         </div>
     );
 };
