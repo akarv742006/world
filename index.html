@@ -1,30 +1,16 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
-  </head>
-  <body>
-    <!-- Global Diagnostics Wrapper -->
-    <div id="diagnostic-barrier" style="position:fixed; top:0; left:0; font-family:monospace; font-size:10px; color:rgba(212,175,55,0.2); pointer-events:none; z-index:9999;">
-      V_03
-    </div>
-    
-    <div id="root"></div>
-    
-    <script type="text/javascript">
-      window.onerror = function(msg, url, line, col, error) {
-        var errorDisplay = document.createElement('div');
-        errorDisplay.style.cssText = 'position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:#2D0202; color:#fff; border:2px solid #f00; padding:20px; z-index:10000; font-family:sans-serif; text-align:center; max-width:90%;';
-        errorDisplay.innerHTML = '<h3>CRITICAL LOAD ERROR</h3><p style="font-size:12px;">' + msg + '</p><p style="font-size:10px; color:#aaa;">Line: ' + line + '</p><button onclick="window.location.reload()" style="margin-top:10px; background:#f00; color:#fff; border:none; padding:5px 15px; border-radius:5px;">Retry</button>';
-        document.body.appendChild(errorDisplay);
-        return false;
-      };
-      console.log("Global Error Monitor Initialized");
-    </script>
-    
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>vite-project</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./src/main.jsx"></script>
+</body>
+
 </html>
