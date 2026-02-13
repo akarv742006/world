@@ -24,7 +24,7 @@ const Promises = ({ onNext }) => {
                 {promises.map((promise, index) => (
                     <motion.div
                         key={index}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ scale: 1.03, rotate: index % 2 === 0 ? 1 : -1 }}

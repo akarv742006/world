@@ -6,6 +6,8 @@ import Wishes from './components/Wishes';
 import SinglePhoto from './components/SinglePhoto';
 import LoveLetter from './components/LoveLetter';
 import Reasons from './components/Reasons';
+import Timeline from './components/Timeline';
+import Promises from './components/Promises';
 import Layout from './components/Layout';
 import Confetti from 'react-confetti';
 import { motion } from 'framer-motion';
@@ -18,8 +20,10 @@ function App() {
   }, [stage]);
 
   const handleStart = () => setStage('loveletter');
-  const handleLoveLetterNext = () => setStage('reasons');
-  const handleReasonsNext = () => setStage('wishes');
+  const handleLoveLetterNext = () => setStage('timeline');
+  const handleTimelineNext = () => setStage('reasons');
+  const handleReasonsNext = () => setStage('promises');
+  const handlePromisesNext = () => setStage('wishes');
   const handleWishesNext = () => setStage('photo');
   const handlePhotoNext = () => setStage('proposal');
   const handleYes = () => setStage('celebration');
@@ -38,9 +42,21 @@ function App() {
         </motion.div>
       )}
 
+      {stage === 'timeline' && (
+        <motion.div key="timeline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
+          <Timeline onNext={handleTimelineNext} />
+        </motion.div>
+      )}
+
       {stage === 'reasons' && (
         <motion.div key="reasons" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full">
           <Reasons onNext={handleReasonsNext} />
+        </motion.div>
+      )}
+
+      {stage === 'promises' && (
+        <motion.div key="promises" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="w-full flex justify-center">
+          <Promises onNext={handlePromisesNext} />
         </motion.div>
       )}
 
