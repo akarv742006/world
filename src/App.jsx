@@ -16,41 +16,42 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    console.log("Current Stage:", stage);
   }, [stage]);
 
-  const handleStart = () => setStage('loveletter');
-  const handleLoveLetterNext = () => setStage('timeline');
-  const handleTimelineNext = () => setStage('reasons');
-  const handleReasonsNext = () => setStage('promises');
-  const handlePromisesNext = () => setStage('wishes');
-  const handleWishesNext = () => setStage('photo');
-  const handlePhotoNext = () => setStage('proposal');
-  const handleYes = () => {
-    setStage('celebration');
-    confetti({
-      particleCount: 150,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#B76E79', '#D4AF37', '#FFF']
-    });
+  const next = (s) => setStage(s);
+
+  const renderContent = () => {
+    switch (stage) {
+      case 'welcome': return <Welcome onStart={() => next('loveletter')} />;
+      case 'loveletter': return <LoveLetter onNext={() => next('timeline')} />;
+      case 'timeline': return <Timeline onNext={() => next('reasons')} />;
+      case 'reasons': return <Reasons onNext={() => next('promises')} />;
+      case 'promises': return <Promises onNext={() => next('wishes')} />;
+      case 'wishes': return <Wishes onNext={() => next('photo')} />;
+      case 'photo': return <SinglePhoto onNext={() => next('proposal')} />;
+      case 'proposal': return <Proposal onYes={() => {
+        next('celebration');
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ['#B76E79', '#D4AF37', '#FFF']
+        });
+      }} />;
+      case 'celebration': return (
+        <div className="w-full fade-in">
+          <Gallery />
+        </div>
+      );
+      default: return <Welcome onStart={() => next('loveletter')} />;
+    }
   };
 
   return (
-    <Layout stage={stage}>
-      <div className="w-full flex flex-col items-center">
-        {stage === 'welcome' && <Welcome onStart={handleStart} />}
-        {stage === 'loveletter' && <LoveLetter onNext={handleLoveLetterNext} />}
-        {stage === 'timeline' && <Timeline onNext={handleTimelineNext} />}
-        {stage === 'reasons' && <Reasons onNext={handleReasonsNext} />}
-        {stage === 'promises' && <Promises onNext={handlePromisesNext} />}
-        {stage === 'wishes' && <Wishes onNext={handleWishesNext} />}
-        {stage === 'photo' && <SinglePhoto onNext={handlePhotoNext} />}
-        {stage === 'proposal' && <Proposal onYes={handleYes} />}
-        {stage === 'celebration' && (
-          <div className="w-full fade-in">
-            <Gallery />
-          </div>
-        )}
+    <Layout>
+      <div className="w-full min-h-[80vh] flex flex-col items-center">
+        {renderContent()}
       </div>
     </Layout>
   );
